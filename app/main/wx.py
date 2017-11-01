@@ -1,6 +1,6 @@
 import hashlib
 from datetime import datetime
-from models import User,Material
+from ..models import User,Material
 import re
 import time
 from config import WX_TOKEN

@@ -42,7 +42,7 @@
 </head>
 <body>
     <div class="container-fluid">
-        <h1 class="text-center">Goodwriter</h1>
+        <h1 class="text-center"><a href="{{ url_for('main.index') }}">Goodwriter</a></h1>
 
     <hr/>
         <div class="row">
@@ -76,7 +76,7 @@
                 <input type="text" class="form-control" placeholder="标题" name="title" value="{{article.title}}"/>
                 <h3>内容</h3>
                 <textarea  class="form-control" placeholder="内容" name="content" >{{article.content}}</textarea>
-                <h4>更新时间：{{material.edit_time}}</h4>
+                <h4>更新时间：{{article.edit_time}}</h4>
                 {% else %}
                 <input name="artic_id" type="hidden" value="" />
                 <h3>标题</h3>

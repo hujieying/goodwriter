@@ -25,12 +25,12 @@
             <h1 class="text-center"><a href="{{ url_for('main.index') }}">Goodwriter</a></h1>
         </div>
     </div>
-    <div class="container-fluid">
-        <div class="col-md-2">
-            <div>
-                <h2>Goodwriter</h2>
-            </div>
-            <div>
+		<div class="container-fluid">
+				<div class="col-md-2">
+						<div>
+								<h2>Goodwriter</h2>
+						</div>
+						<div>
 							{% if current_user.is_authenticated %}
 								<h4><a href="#">欢迎{{ current_user.email }}</a></h4>
 								<h4><a href="{{ url_for('auth.logout') }}">注销</a></h4>
@@ -44,19 +44,24 @@
 								<h4><a href="{{ url_for('auth.login') }}">登录</a></h4>
 								<h4><a href="{{ url_for('auth.register') }}">注册</a></h4>
 							{% endif %}
-            </div>
-        </div>
-        <div class="col-md-1">
-        </div>
-        <div class="col-md-6">
-            <h3>
-                Goodwriter@文章自在网站介绍
-            </h3>
-            <hr>
+						</div>
+				</div>
+				<div class="col-md-1">
+				</div>
+        <div class="page-header">
+            <h1>
+                Hello, {{ current_user.email }}!
+            </h1>
+            <h3>You have not confirmed your account yet.</h3>
             <p>
-                Fluent Draft@文章自在是一个记录写作素材的网站。你可以在微信版和网页版都登陆，记录自己的写作素材，并同步。让你的写作像发微信一样方便快捷，只需要添加微博上常用的话题标签##，后台就可以自动帮你分类整理好写作素材。自由写作，文章自在~
+                Before you can access this site you need to confirm your account.
+                Check your inbox, you should have received an email with a confirmation link.
+            </p>
+            <p>
+                Need another confirmation email?
+                <a href="{{ url_for('auth.resend_confirmation') }}">Click here</a>
             </p>
         </div>
-    </div>
+		</div>
 </body>
 </html>

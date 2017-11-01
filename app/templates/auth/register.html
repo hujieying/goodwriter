@@ -1,3 +1,6 @@
+{% import "bootstrap/wtf.html" as wtf %}
+
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -20,7 +23,7 @@
 <body>
     <div class="container-fluid">
         <div class="page-header">
-            <h1 class="text-center">Goodwriter</h1>
+            <h1 class="text-center"><a href="{{ url_for('main.index') }}">Goodwriter</a></h1>
         </div>
     </div>
     <div class="container-fluid">
@@ -29,34 +32,28 @@
                 <h2>Goodwriter</h2>
             </div>
             <div>
-                <h4><a href="#">登录</a> | <a href="/regist">注册</a></h4>
+							{% if current_user.is_authenticated %}
+								<h4><a href="#">欢迎{{ current_user.email }}</a></h4>
+								<h4><a href="{{ url_for('auth.logout') }}">注销</a></h4>
+								<hr/>
+								<h4><a href="{{ url_for('main.article_edit') }}">写文章</a></h4>
+								<h4><a href="{{ url_for('main.article_list') }}">查文章</a></h4>
+								<hr/>
+								<h4><a href="{{ url_for('main.material_edit') }}">写素材</a></h4>
+								<h4><a href="{{ url_for('main.material_list') }}">查素材</a></h4>
+							{% else %}
+								<h4><a href="{{ url_for('auth.login') }}">登录</a></h4>
+								<h4><a href="{{ url_for('auth.register') }}">注册</a></h4>
+							{% endif %}
             </div>
         </div>
         <div class="col-md-1">
         </div>
+        <div class="page-header">
+            <h1>Register</h1>
+        </div>
         <div class="col-md-4">
-          <form action="" method="POST">
-            <div>
-                <h2>
-                    登录 或 <a href="regist"><span>注册</span></a>
-                </h2>
-            </div>
-            <hr>
-            <div class="btn-group pull-center">
-                <h3>Email</h3>
-                <input type="text" class="form-control" placeholder="example@163.com" name="email">
-                <h3>Password</h3>
-                <input type="password" class="form-control" placeholder="Password" name="password">
-                <input type="checkbox">
-                <label>Remember me?</label>
-            </div>
-            <div>
-                <button class="btn btn-primary" type="submit">登录</button>
-            </div>
-            <div>
-                <a href="#">Forget password?</a>
-            </div>
-          </form>
+            {{ wtf.quick_form(form) }}
         </div>
     </div>
 </body>

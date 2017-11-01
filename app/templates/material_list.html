@@ -15,7 +15,7 @@
 </head>
 <body>
     <div class="container-fluid">
-        <h1 class="text-center">Goodwriter</h1>
+        <h1 class="text-center"><a href="{{ url_for('main.index') }}">Goodwriter</a></h1>
         <div class="row" class="col-sm-6">
             <div class="col-md-6">
                 <input type="text" placeholder="输入查找内容">
@@ -34,7 +34,7 @@
                         <div class="btn-group-vertical" role="group">
                             <button class="btn btn-link btn-lg"><span class="glyphicon glyphicon-paperclip" aria-hidden="true">标签</span></button>
                             {% for tag in tags %}
-                            <a href="{{url_for('material_list',tag=tag.tag)}}">{{tag.tag}}</a>
+                            <a href="{{url_for('main.material_list',tag=tag.tag)}}">{{tag.tag}}</a>
 
                             {%endfor%}
                         </div>
@@ -44,7 +44,7 @@
             <div class="col-sm-9">
                 <div class="list-group">
                   {% for material in materials %}
-                    <a href="{{url_for('material_edit', mater_id=material.mater_id) }}" class="list-group-item active">
+                    <a href="{{url_for('main.material_edit', mater_id=material.mater_id) }}" class="list-group-item active">
                         <h5 class="list-group-item-heading">{{material.tag}}</h5>
                         <p class="list-group-item-text">{{material.content}}</p>
                     </a>
